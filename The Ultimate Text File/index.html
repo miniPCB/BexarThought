@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>The Ultimate Text File</title>
+</head>
+<body>
+    <input type="file" id="fileInput">
+    <pre id="fileContent"></pre>
+    <script>
+    document.getElementById('fileInput').addEventListener('change', function(event) {
+        const file = event.target.files[0]; // Get the selected file
+        if (file) {
+            const reader = new FileReader(); // Create a FileReader object
+    
+            // Define the onload event to read the file content
+            reader.onload = function(e) {
+                const content = e.target.result; // Get the file content
+                document.getElementById('fileContent').textContent = content; // Display file content
+            };
+    
+            // Read the file as text
+            reader.readAsText(file);
+        }
+    });
+    </script>
+</body>
+</html>
